@@ -1,2 +1,2 @@
 # conan-pion
-Conan.io package for cpp-net library
+Conan.io package for pion library
