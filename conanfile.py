@@ -10,18 +10,41 @@ class pionConan(ConanFile):
     license="https://github.com/splunk/pion#license"
     generators = "cmake", "txt"
     settings = "os", "compiler", "build_type", "arch"
-    requires = "Boost/1.60.0@lasote/stable";
+    requires = "Boost/1.60.0@lasote/stable", \
+        "bzip2/1.0.6@lasote/stable", \
+        "OpenSSL/1.0.2j@lasote/stable", \
+        "zlib/1.2.9@lasote/stable";
 
     options = {"shared": [True, False],
                "enable_spdy": [True, False],
                "enable_tests": [True, False],
                "enable_piond": [True, False],
-               "enable_helloserver": [True, False]}
+               "enable_helloserver": [True, False],
+               "enable_allownothingservice": [True, False],
+               "enable_cookieservice": [True, False],
+               "enable_echoservice": [True, False],
+               "enable_fileservice": [True, False],
+               "enable_helloservice": [True, False],
+               "enable_logservice": [True, False],
+               "enable_log4cplus": [True, False],
+               "enable_log4cxx": [True, False],
+               "enable_log4cpp": [True, False],
+               "enable_logging": [True, False]}
     default_options = "shared=False", \
         "enable_spdy=True", \
         "enable_tests=False", \
         "enable_piond=False", \
-        "enable_helloserver=False"
+        "enable_helloserver=False", \
+        "enable_allownothingservice=False", \
+        "enable_cookieservice=False", \
+        "enable_echoservice=False", \
+        "enable_fileservice=False", \
+        "enable_helloservice=False", \
+        "enable_logservice=False", \
+        "enable_log4cplus=False", \
+        "enable_log4cxx=False", \
+        "enable_log4cpp=False", \
+        "enable_logging=False"
 
     def source(self):
         self.run("git clone --recursive https://github.com/splunk/pion.git")
@@ -74,6 +97,26 @@ endif()
                the_option = "BUILD_PIOND=ON" if activated else "BUILD_PIOND=OFF"
             elif option_name == "enable_helloserver":
                the_option = "BUILD_HELLOSERVER=ON" if activated else "BUILD_HELLOSERVER=OFF"
+            elif option_name == "enable_allownothingservice":
+               the_option = "BUILD_ALLOWNOTHINGSERVICE=ON" if activated else "BUILD_ALLOWNOTHINGSERVICE=OFF"
+            elif option_name == "enable_cookieservice":
+               the_option = "BUILD_COOKIESERVICE=ON" if activated else "BUILD_COOKIESERVICE=OFF"
+            elif option_name == "enable_echoservice":
+               the_option = "BUILD_ECHOSERVICE=ON" if activated else "BUILD_ECHOSERVICE=OFF"
+            elif option_name == "enable_fileservice":
+               the_option = "BUILD_FILESERVICE=ON" if activated else "BUILD_FILESERVICE=OFF"
+            elif option_name == "enable_helloservice":
+               the_option = "BUILD_HELLOSERVICE=ON" if activated else "BUILD_HELLOSERVICE=OFF"
+            elif option_name == "enable_logservice":
+               the_option = "BUILD_LOGSERVICE=ON" if activated else "BUILD_LOGSERVICE=OFF"
+            elif option_name == "enable_log4cplus":
+               the_option = "USE_LOG4CPLUS=ON" if activated else "USE_LOG4CPLUS=OFF"
+            elif option_name == "enable_log4cxx":
+               the_option = "USE_LOG4CXX=ON" if activated else "USE_LOG4CXX=OFF"
+            elif option_name == "enable_log4cpp":
+               the_option = "USE_LOG4CPP=ON" if activated else "USE_LOG4CPP=OFF"
+            elif option_name == "enable_logging":
+               the_option = "DISABLE_LOGGING=OFF" if activated else "DISABLE_LOGGING=ON"
             else:
                the_option += "ON" if activated else "OFF"
             cmake_options.append(the_option)
