@@ -10,13 +10,17 @@ environment:
     CONAN_USERNAME: "Wi3ard"
     CONAN_CHANNEL: "stable"
     CONAN_STABLE_BRANCH_PATTERN: "release/*"
-    CONAN_TOTAL_PAGES: 4
+    CONAN_TOTAL_PAGES: 8
 
     matrix:
         - CONAN_CURRENT_PAGE: 1
         - CONAN_CURRENT_PAGE: 2
         - CONAN_CURRENT_PAGE: 3
         - CONAN_CURRENT_PAGE: 4
+        - CONAN_CURRENT_PAGE: 5
+        - CONAN_CURRENT_PAGE: 6
+        - CONAN_CURRENT_PAGE: 7
+        - CONAN_CURRENT_PAGE: 8
 
 init:
     - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"

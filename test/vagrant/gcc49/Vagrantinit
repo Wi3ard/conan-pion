@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Set time to UTC.
+timedatectl set-timezone UTC
+
+# Install basic packages.
+apt-get update
+apt-get -y upgrade
+apt-get -y install cmake gdb git mc python-pip
+
+# Install conan.
+pip install conan
+pip install conan-package-tools
+
+# Install gcc 4.9.
+apt-get -y install gcc-4.9 g++-4.9
+rm /usr/bin/cpp
+ln -s /usr/bin/cpp-4.9 /usr/bin/cpp
+rm /usr/bin/g++
+ln -s /usr/bin/g++-4.9 /usr/bin/g++
+rm /usr/bin/gcc
+ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
+rm /usr/bin/gcc-ar
+ln -s /usr/bin/gcc-ar-4.9 /usr/bin/gcc-ar
+rm /usr/bin/gcc-nm
+ln -s /usr/bin/gcc-nm-4.9 /usr/bin/gcc-nm
+rm /usr/bin/gcc-ranlib
+ln -s /usr/bin/gcc-ranlib-4.9 /usr/bin/gcc-ranlib
+rm /usr/bin/gcov
+ln -s /usr/bin/gcov-4.9 /usr/bin/gcov

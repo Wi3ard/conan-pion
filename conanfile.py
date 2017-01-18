@@ -53,9 +53,10 @@ class pionConan(ConanFile):
         self.run("git clone --recursive https://github.com/splunk/pion.git")
         self.run("cd pion && git checkout develop")
 
-    def config(self):
+    def configure(self):
         self.options["Boost"].shared = self.options.shared
         self.options["OpenSSL"].shared = self.options.shared
+        self.options["OpenSSL"].no_electric_fence = True
         self.options["zlib"].shared = self.options.shared
 
     def build(self):
