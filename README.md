@@ -2,7 +2,6 @@
 [![Build Status](https://travis-ci.org/Wi3ard/conan-pion.svg?branch=master)](https://travis-ci.org/Wi3ard/conan-pion)
 
 # conan-pion
-Conan.io package for pion library
 
 [Conan.io](https://conan.io) package for [pion](https://github.com/splunk/pion) library
 
