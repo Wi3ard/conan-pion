@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/f98r7ox30217stun/branch/master?svg=true)](https://ci.appveyor.com/project/Wi3ard/conan-pion/branch/master)
+[![Build Status](https://travis-ci.org/Wi3ard/conan-pion.svg?branch=master)](https://travis-ci.org/Wi3ard/conan-pion)
+
 # conan-pion
 Conan.io package for pion library
 
