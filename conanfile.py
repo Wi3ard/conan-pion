@@ -34,7 +34,7 @@ class pionConan(ConanFile):
                "enable_log4cpp": [True, False],
                "enable_logging": [True, False]}
     default_options = "shared=False", \
-                      "fpic=True", \
+                      "fpic=False", \
                       "enable_spdy=True", \
                       "enable_tests=False", \
                       "enable_piond=False", \
@@ -139,7 +139,10 @@ endif()
         self.output.warn(cmake_conf_command)
         self.run(cmake_conf_command)
 
-        self.run("cmake --build . --target install %s -- -j%s" % (cmake.build_config, cpu_count()))
+        if self.settings.os == "Windows":
+            self.run("cmake --build . --target install %s" % cmake.build_config)
+        else:
+            self.run("cmake --build . --target install %s -- -j%s" % (cmake.build_config, cpu_count()))
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
