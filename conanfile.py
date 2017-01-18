@@ -6,8 +6,9 @@ import shutil
 class pionConan(ConanFile):
     name = "pion"
     version = "5.0.7-dev"
-    url="https://github.com/splunk/pion"
-    license="https://github.com/splunk/pion#license"
+    url = "https://github.com/splunk/pion"
+    license = "https://github.com/splunk/pion#license"
+    description = "Pion Network Library"
     generators = "cmake", "txt"
     settings = "os", "compiler", "build_type", "arch"
     requires = "Boost/1.60.0@lasote/stable", \
@@ -149,5 +150,5 @@ endif()
         if not self.options.shared:
             self.cpp_info.cppflags = ["-DPION_STATIC_LINKING"]
 
-#        if self.settings.compiler == "gcc" or self.settings.compiler == "apple-clang":
-#            self.cpp_info.cppflags = ["-std=c++11"]
+        if self.settings.compiler == "gcc" or self.settings.compiler == "apple-clang":
+            self.cpp_info.cppflags = ["-std=c++11"]
