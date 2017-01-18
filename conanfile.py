@@ -6,7 +6,7 @@ import shutil
 class pionConan(ConanFile):
     name = "pion"
     version = "5.0.7-dev"
-    url = "https://github.com/splunk/pion"
+    url = "https://github.com/Wi3ard/conan-pion"
     license = "https://github.com/splunk/pion#license"
     description = "Pion Network Library"
     generators = "cmake", "txt"
