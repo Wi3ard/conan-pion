@@ -9,6 +9,7 @@ environment:
     CONAN_REFERENCE: "pion/5.0.7-dev"
     CONAN_USERNAME: "Wi3ard"
     CONAN_CHANNEL: "stable"
+    CONAN_STABLE_BRANCH_PATTERN: "release/*"
     CONAN_TOTAL_PAGES: 4
 
     matrix:

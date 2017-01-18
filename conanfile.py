@@ -11,7 +11,7 @@ class pionConan(ConanFile):
     description = "Pion Network Library"
     generators = "cmake", "txt"
     settings = "os", "compiler", "build_type", "arch"
-    requires = "Boost/1.63.0@eliaskousk/stable", \
+    requires = "Boost/1.62.0@lasote/testing", \
         "bzip2/1.0.6@lasote/stable", \
         "OpenSSL/1.0.2j@lasote/stable", \
         "zlib/1.2.11@windoze/stable"
@@ -55,7 +55,6 @@ class pionConan(ConanFile):
 
     def config(self):
         self.options["Boost"].shared = self.options.shared
-        self.options["bzip2"].shared = self.options.shared
         self.options["OpenSSL"].shared = self.options.shared
         self.options["zlib"].shared = self.options.shared
 
