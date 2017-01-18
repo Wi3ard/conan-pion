@@ -11,11 +11,10 @@ class pionConan(ConanFile):
     description = "Pion Network Library"
     generators = "cmake", "txt"
     settings = "os", "compiler", "build_type", "arch"
-    requires = "Boost/1.60.0@lasote/stable", \
+    requires = "Boost/1.63.0@eliaskousk/stable", \
         "bzip2/1.0.6@lasote/stable", \
         "OpenSSL/1.0.2j@lasote/stable", \
-        "zlib/1.2.9@lasote/stable"
-    build_policy = "missing"
+        "zlib/1.2.11@windoze/stable"
 
     options = {"shared": [True, False],
                "fpic": [True, False],
@@ -34,7 +33,7 @@ class pionConan(ConanFile):
                "enable_log4cpp": [True, False],
                "enable_logging": [True, False]}
     default_options = "shared=False", \
-                      "fpic=False", \
+                      "fpic=True", \
                       "enable_spdy=True", \
                       "enable_tests=False", \
                       "enable_piond=False", \
