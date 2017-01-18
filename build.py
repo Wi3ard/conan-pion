@@ -1,6 +1,6 @@
 from conan.packager import ConanMultiPackager
 
 if __name__ == "__main__":
-    builder = ConanMultiPackager(gcc_versions = ["4.8", "4.9", "5.2", "5.3"])
+    builder = ConanMultiPackager()
     builder.add_common_builds(shared_option_name="pion:shared")
     builder.run()

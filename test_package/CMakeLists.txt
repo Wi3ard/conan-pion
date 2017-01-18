@@ -10,4 +10,4 @@ add_executable(testproj test.cpp)
 
 target_link_libraries(testproj
     ${CONAN_LIBS}
-	${CMAKE_THREAD_LIBS_INIT})
+    ${CMAKE_THREAD_LIBS_INIT})

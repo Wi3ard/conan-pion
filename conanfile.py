@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake
-from conans.tools import replace_in_file
+from conans.tools import cpu_count, replace_in_file
 import os
 import shutil
 
@@ -17,6 +17,7 @@ class pionConan(ConanFile):
         "zlib/1.2.9@lasote/stable";
 
     options = {"shared": [True, False],
+               "fpic": [True, False],
                "enable_spdy": [True, False],
                "enable_tests": [True, False],
                "enable_piond": [True, False],
@@ -32,24 +33,31 @@ class pionConan(ConanFile):
                "enable_log4cpp": [True, False],
                "enable_logging": [True, False]}
     default_options = "shared=False", \
-        "enable_spdy=True", \
-        "enable_tests=False", \
-        "enable_piond=False", \
-        "enable_helloserver=False", \
-        "enable_allownothingservice=False", \
-        "enable_cookieservice=False", \
-        "enable_echoservice=False", \
-        "enable_fileservice=False", \
-        "enable_helloservice=False", \
-        "enable_logservice=False", \
-        "enable_log4cplus=False", \
-        "enable_log4cxx=False", \
-        "enable_log4cpp=False", \
-        "enable_logging=False"
+                      "fpic=True", \
+                      "enable_spdy=True", \
+                      "enable_tests=False", \
+                      "enable_piond=False", \
+                      "enable_helloserver=False", \
+                      "enable_allownothingservice=False", \
+                      "enable_cookieservice=False", \
+                      "enable_echoservice=False", \
+                      "enable_fileservice=False", \
+                      "enable_helloservice=False", \
+                      "enable_logservice=False", \
+                      "enable_log4cplus=False", \
+                      "enable_log4cxx=False", \
+                      "enable_log4cpp=False", \
+                      "enable_logging=False"
 
     def source(self):
         self.run("git clone --recursive https://github.com/splunk/pion.git")
         self.run("cd pion && git checkout develop")
+
+    def config(self):
+        self.options["Boost"].shared = self.options.shared
+        self.options["bzip2"].shared = self.options.shared
+        self.options["OpenSSL"].shared = self.options.shared
+        self.options["zlib"].shared = self.options.shared
 
     def build(self):
         conan_magic_lines = '''find_package(Threads REQUIRED)
@@ -90,6 +98,8 @@ endif()
             the_option = "%s=" % option_name.upper()
             if option_name == "shared":
                the_option = "BUILD_SHARED_LIBS=ON" if activated else "BUILD_SHARED_LIBS=OFF"
+            elif option_name == "fpic":
+               the_option = "CMAKE_POSITION_INDEPENDENT_CODE=ON" if activated else "CMAKE_POSITION_INDEPENDENT_CODE=OFF"
             elif option_name == "enable_spdy":
                the_option = "BUILD_SPDY=ON" if activated else "BUILD_SPDY=OFF"
             elif option_name == "enable_tests":
@@ -128,7 +138,7 @@ endif()
         self.output.warn(cmake_conf_command)
         self.run(cmake_conf_command)
 
-        self.run("cmake --build . --target install %s" % cmake.build_config)
+        self.run("cmake --build . --target install %s -- -j%s" % (cmake.build_config, cpu_count()))
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
