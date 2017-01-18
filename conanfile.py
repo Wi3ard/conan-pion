@@ -14,7 +14,7 @@ class pionConan(ConanFile):
     requires = "Boost/1.62.0@lasote/testing", \
         "bzip2/1.0.6@lasote/stable", \
         "OpenSSL/1.0.2j@lasote/stable", \
-        "zlib/1.2.11@windoze/stable"
+        "zlib/1.2.8@lasote/stable"
 
     options = {"shared": [True, False],
                "fpic": [True, False],
