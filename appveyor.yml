@@ -8,9 +8,9 @@ environment:
     CONAN_UPLOAD: 1
     CONAN_REFERENCE: "pion/5.0.7-dev"
     CONAN_USERNAME: "Wi3ard"
-    CONAN_CHANNEL: "stable"
+    CONAN_CHANNEL: "testing"
     CONAN_STABLE_BRANCH_PATTERN: "release/*"
-    CONAN_TOTAL_PAGES: 8
+    CONAN_TOTAL_PAGES: 20
 
     matrix:
         - CONAN_CURRENT_PAGE: 1
@@ -21,6 +21,18 @@ environment:
         - CONAN_CURRENT_PAGE: 6
         - CONAN_CURRENT_PAGE: 7
         - CONAN_CURRENT_PAGE: 8
+        - CONAN_CURRENT_PAGE: 9
+        - CONAN_CURRENT_PAGE: 10
+        - CONAN_CURRENT_PAGE: 11
+        - CONAN_CURRENT_PAGE: 12
+        - CONAN_CURRENT_PAGE: 13
+        - CONAN_CURRENT_PAGE: 14
+        - CONAN_CURRENT_PAGE: 15
+        - CONAN_CURRENT_PAGE: 16
+        - CONAN_CURRENT_PAGE: 17
+        - CONAN_CURRENT_PAGE: 18
+        - CONAN_CURRENT_PAGE: 19
+        - CONAN_CURRENT_PAGE: 20
 
 init:
     - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
